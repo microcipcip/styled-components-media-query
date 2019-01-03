@@ -70,7 +70,7 @@ const BpInit = ({ bp = bpDefaults, type = 'width' } = {}) => (
   const maxV = getBpValue(max, bp)
 
   if (!Array.isArray(contentCSS)) {
-    throw `Breakpoint error: oops, you passed a string instead of the styled-component css\`\` helper.`
+    throw `Breakpoint error: oops, you passed a string instead of the styled-component css\`cssCodeHere\` helper.`
   }
 
   if (minV >= 0 && !maxV) {
