@@ -1,4 +1,4 @@
-import { css, FlattenSimpleInterpolation } from 'styled-components'
+import { css } from 'styled-components'
 
 export const bpDefaults = {
   xxxs: 0,
@@ -31,10 +31,14 @@ export const getBpValue = (
       return val
     case 'string':
       if (!bp.hasOwnProperty(val)) {
-        throw new Error(`Breakpoint error: oops, you passed a value that is not defined in the 'bp' object.`)
+        throw new Error(
+          `Breakpoint error: oops, you passed a value that is not defined in the 'bp' object.`
+        )
       }
       if (typeof bp[val] !== 'number') {
-        throw new Error(`Breakpoint error: oops, you passed a value that is not a proper number.`)
+        throw new Error(
+          `Breakpoint error: oops, you passed a value that is not a proper number.`
+        )
       }
 
       return bp[val]
@@ -64,12 +68,14 @@ export const getBpValue = (
 const BpInit = ({ bp = bpDefaults, type = 'width' } = {}) => (
   min?: string | number | null,
   max?: string | number | null
-) => (contentCSS: Array<any>) => {
+) => (contentCSS: []) => {
   const minV = getBpValue(min, bp)
   const maxV = getBpValue(max, bp)
 
   if (!Array.isArray(contentCSS)) {
-    throw new Error(`Breakpoint error: oops, you passed a string instead of the styled-component css\`cssCodeHere\` helper.`)
+    throw new Error(
+      `Breakpoint error: oops, you passed a string instead of the styled-component css\`cssCodeHere\` helper.`
+    )
   }
 
   if (minV >= 0 && !maxV) {
