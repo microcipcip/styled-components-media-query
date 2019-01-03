@@ -1,6 +1,6 @@
 {
   "name": "styled-components-mq",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Styled components utility for building media queries",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
