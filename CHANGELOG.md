@@ -2,5 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/microcipcip/styled-components-mq/compare/v1.0.1...v1.0.2) (2019-01-03)
+
+
+### Bug Fixes
+
+* Fixing errors according to tslint.json ([2f58273](https://github.com/microcipcip/styled-components-mq/commit/2f58273))
+
+
+
 <a name="1.0.1"></a>
 ## 1.0.1 (2019-01-03)
