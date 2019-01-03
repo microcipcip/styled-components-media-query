@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css, FlattenSimpleInterpolation } from 'styled-components'
 
 export const bpDefaults = {
   xxxs: 0,
@@ -78,7 +78,7 @@ export const getBpValue = (
 const BpInit = ({ bp = bpDefaults, type = 'width' } = {}) => (
   min?: string | number | null,
   max?: string | number | null
-) => (contentCSS: []) => {
+) => (contentCSS: FlattenSimpleInterpolation) => {
   const minV = getBpValue(min, bp)
   const maxV = getBpValue(max, bp)
 
@@ -88,13 +88,13 @@ const BpInit = ({ bp = bpDefaults, type = 'width' } = {}) => (
     )
   }
 
-  if (minV >= 0 && !maxV) {
+  if (minV >= 0 && maxV === -1) {
     return css`
       @media only screen and (min-${type}: ${minV}px) {
         ${contentCSS}
       }
     `
-  } else if (!minV && maxV >= 0) {
+  } else if (minV === -1 && maxV >= 0) {
     return css`
       @media only screen and (max-${type}: ${maxV - 1}px) {
         ${contentCSS}
