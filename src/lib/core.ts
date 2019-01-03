@@ -6,7 +6,6 @@ export const bpDefaults = {
   xs: 320,
   s: 400,
   sl: 500,
-  sl2: 580,
   m: 768,
   ml: 992,
   l: 1100,
@@ -52,12 +51,23 @@ export const getBpValue = (
  *
  * ### Usage
  * ```js
- * import { css } from 'styled-components'
- * import BpInit from 'styled-components-mq'
+ * import { styled, css } from 'styled-components'
+ * import BpInit from 'styled-components-media-query'
  *
  * // initialize
  * const bpList = {s: 400, sl: 500, m: 768, ml: 992, l: 1100}
  * const bp = BpInit({ bp: bpList })
+ *
+ * // use like this
+ * const ComponentStyled = styled.div`
+ *  position: relative;
+ *  ${mq('m')(css`
+ *    position: absolute;
+ *  `)}
+ *  ${mq('l')(css`
+ *    position: fixed;
+ *  `)}
+ * `
  * ```
  *
  * @param bp      Pass a breakpoint object to customize the breakpoints you wish to use.
@@ -100,5 +110,7 @@ const BpInit = ({ bp = bpDefaults, type = 'width' } = {}) => (
   }
   return css``
 }
+
+export const bpExec = BpInit()
 
 export default BpInit

@@ -1,3 +1,3 @@
-# styled-components-mq
+# Styled components media query
 
-Styled components utility for building media queries
+This is a very simple styled components utility you can use for **building media queries**.
