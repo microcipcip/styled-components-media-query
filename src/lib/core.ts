@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 import { ArrayType } from 'typedoc/dist/lib/models'
 
-const bpDefaults = {
+export const bpDefaults = {
   xxxs: 0,
   xxs: 200,
   xs: 320,
@@ -23,7 +23,7 @@ type Tbp = {
   [bp: string]: number
 }
 
-const getBpValue = (
+export const getBpValue = (
   val: number | string | null | undefined,
   bp: Tbp
 ): number => {
