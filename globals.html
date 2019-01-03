@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>styled-components-mq</title>
+	<title>styled-components-media-query</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">styled-components-mq</a>
+					<a href="index.html" class="title">styled-components-media-query</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> styled-components-mq</h1>
+			<h1> styled-components-media-query</h1>
 		</div>
 	</div>
 </header>
@@ -71,6 +71,12 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/ibp.html" class="tsd-kind-icon">Ibp</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable"><a href="globals.html#bpexec" class="tsd-kind-icon">bp<wbr>Exec</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -90,6 +96,19 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable">
+					<a name="bpexec" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> bp<wbr>Exec</h3>
+					<div class="tsd-signature tsd-kind-icon">bp<wbr>Exec<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> =&nbsp;BpInit()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L114">lib/core.ts:114</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="bpinit" class="tsd-anchor"></a>
@@ -101,7 +120,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L68">lib/core.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L78">lib/core.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -109,12 +128,23 @@
 									<p>Initialize breakpoints</p>
 								</div>
 								<h3 id="usage">Usage</h3>
-								<pre><code class="language-js"><span class="hljs-keyword">import</span> { css } <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>
-<span class="hljs-keyword">import</span> BpInit <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components-mq'</span>
+								<pre><code class="language-js"><span class="hljs-keyword">import</span> { styled, css } <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>
+<span class="hljs-keyword">import</span> BpInit <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components-media-query'</span>
 
 <span class="hljs-comment">// initialize</span>
 <span class="hljs-keyword">const</span> bpList = {<span class="hljs-attr">s</span>: <span class="hljs-number">400</span>, <span class="hljs-attr">sl</span>: <span class="hljs-number">500</span>, <span class="hljs-attr">m</span>: <span class="hljs-number">768</span>, <span class="hljs-attr">ml</span>: <span class="hljs-number">992</span>, <span class="hljs-attr">l</span>: <span class="hljs-number">1100</span>}
-<span class="hljs-keyword">const</span> bp = BpInit({ <span class="hljs-attr">bp</span>: bpList })</code></pre>
+<span class="hljs-keyword">const</span> bp = BpInit({ <span class="hljs-attr">bp</span>: bpList })
+
+<span class="hljs-comment">// use like this</span>
+<span class="hljs-keyword">const</span> ComponentStyled = styled.div<span class="hljs-string">`
+ position: relative;
+ <span class="hljs-subst">${mq(<span class="hljs-string">'m'</span>)(css<span class="hljs-string">`
+   position: absolute;
+ `</span>)}</span>
+ <span class="hljs-subst">${mq(<span class="hljs-string">'l'</span>)(css<span class="hljs-string">`
+   position: fixed;
+ `</span>)}</span>
+`</span></code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -138,9 +168,6 @@
 												</li>
 												<li class="tsd-parameter">
 													<h5>sl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
-												</li>
-												<li class="tsd-parameter">
-													<h5>sl2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
 												</li>
 												<li class="tsd-parameter">
 													<h5>xl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
@@ -192,7 +219,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L25">lib/core.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L24">lib/core.ts:24</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -217,7 +244,7 @@
 					<div class="tsd-signature tsd-kind-icon">bp<wbr>Defaults<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L3">lib/core.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L3">lib/core.ts:3</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -226,7 +253,7 @@
 						<div class="tsd-signature tsd-kind-icon">l<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;1100</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L12">lib/core.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L11">lib/core.ts:11</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -236,7 +263,7 @@
 						<div class="tsd-signature tsd-kind-icon">m<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;768</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L10">lib/core.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L9">lib/core.ts:9</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -246,7 +273,7 @@
 						<div class="tsd-signature tsd-kind-icon">ml<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;992</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L11">lib/core.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L10">lib/core.ts:10</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -256,7 +283,7 @@
 						<div class="tsd-signature tsd-kind-icon">s<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;400</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L7">lib/core.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L7">lib/core.ts:7</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -266,17 +293,7 @@
 						<div class="tsd-signature tsd-kind-icon">sl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;500</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L8">lib/core.ts:8</a></li>
-							</ul>
-						</aside>
-					</section>
-					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="bpdefaults.sl2" class="tsd-anchor"></a>
-						<h3>sl2</h3>
-						<div class="tsd-signature tsd-kind-icon">sl2<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;580</span></div>
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L9">lib/core.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L8">lib/core.ts:8</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -286,7 +303,7 @@
 						<div class="tsd-signature tsd-kind-icon">xl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;1200</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L13">lib/core.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L12">lib/core.ts:12</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -296,7 +313,7 @@
 						<div class="tsd-signature tsd-kind-icon">xs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;320</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L6">lib/core.ts:6</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L6">lib/core.ts:6</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -306,7 +323,7 @@
 						<div class="tsd-signature tsd-kind-icon">xxl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;1300</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L14">lib/core.ts:14</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L13">lib/core.ts:13</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -316,7 +333,7 @@
 						<div class="tsd-signature tsd-kind-icon">xxs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;200</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L5">lib/core.ts:5</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L5">lib/core.ts:5</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -326,7 +343,7 @@
 						<div class="tsd-signature tsd-kind-icon">xxxl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;1400</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L15">lib/core.ts:15</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L14">lib/core.ts:14</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -336,7 +353,7 @@
 						<div class="tsd-signature tsd-kind-icon">xxxs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L4">lib/core.ts:4</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L4">lib/core.ts:4</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -346,7 +363,7 @@
 						<div class="tsd-signature tsd-kind-icon">xxxxl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;1500</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L16">lib/core.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L15">lib/core.ts:15</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -356,7 +373,7 @@
 						<div class="tsd-signature tsd-kind-icon">xxxxxl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;1600</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L17">lib/core.ts:17</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L16">lib/core.ts:16</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -366,7 +383,7 @@
 						<div class="tsd-signature tsd-kind-icon">xxxxxxl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;1700</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/40f9011/src/lib/core.ts#L18">lib/core.ts:18</a></li>
+								<li>Defined in <a href="https://github.com/microcipcip/styled-components-mq/blob/cd42992/src/lib/core.ts#L17">lib/core.ts:17</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -385,6 +402,9 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-is-not-exported">
 						<a href="interfaces/ibp.html" class="tsd-kind-icon">Ibp</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#bpexec" class="tsd-kind-icon">bp<wbr>Exec</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#bpinit" class="tsd-kind-icon">Bp<wbr>Init</a>
