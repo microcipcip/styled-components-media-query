@@ -1,11 +1,11 @@
 {
-  "name": "styled-components-mq",
+  "name": "styled-components-media-query",
   "version": "1.0.2",
   "description": "Styled components utility for building media queries",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/microcipcip/styled-components-mq",
+  "repository": "https://github.com/microcipcip/styled-components-media-query",
   "license": "MIT",
   "keywords": [],
   "scripts": {
