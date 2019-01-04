@@ -70,6 +70,7 @@ const mqHeight = MqInit({ bp, type: 'height' })
 ```
 
 If you don't pass any value when initializing `MqInit`, it will use the default `bp` object and `type` string, which are:
+
 ```js
 const bp = {  
   xxxs: 0,
@@ -166,7 +167,7 @@ const CompStyled = styled.div`
 
 ---
 
-<details><summary><code>bp/code></summary><p>
+<details><summary><code>bp</code></summary><p>
 
 If you want to use the defaults you can require `mq` directly, although I don't recommend using my breakpoints, always better to tailor them for the specific project.
  
