@@ -65,7 +65,157 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="styled-components-media-query">Styled components media query</h1>
-				<p>This is a very simple styled components utility you can use for <strong>building media queries</strong>.</p>
+				<p><a href="https://npmjs.com/package/styled-components-media-query"><img src="https://img.shields.io/npm/v/styled-components-media-query/latest.svg?style=flat-square" alt="npm (scoped with tag)"></a>
+				<a href="https://npmjs.com/package/styled-components-media-query"><img src="https://img.shields.io/npm/dt/styled-components-media-query.svg?style=flat-square" alt="npm"></a></p>
+				<blockquote>
+					<p>Simple styled components utility that you can use for <strong>building media queries</strong>.</p>
+				</blockquote>
+				<h2 id="install">Install</h2>
+				<ul>
+					<li>yarn: <code>yarn add styled-components-media-query</code></li>
+					<li>npm: <code>npm i --save styled-components-media-query</code></li>
+				</ul>
+				<h2 id="usage">Usage</h2>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { styled, css } <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>
+<span class="hljs-keyword">import</span> MqInit <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components-media-query'</span>
+
+<span class="hljs-comment">// initialize</span>
+<span class="hljs-keyword">const</span> bp = {<span class="hljs-attr">s</span>: <span class="hljs-number">400</span>, <span class="hljs-attr">sl</span>: <span class="hljs-number">500</span>, <span class="hljs-attr">m</span>: <span class="hljs-number">768</span>, <span class="hljs-attr">ml</span>: <span class="hljs-number">992</span>, <span class="hljs-attr">l</span>: <span class="hljs-number">1100</span>}
+<span class="hljs-keyword">const</span> mq = MqInit({ bp })
+
+<span class="hljs-comment">// use like this</span>
+<span class="hljs-keyword">const</span> ComponentStyled = styled.div<span class="hljs-string">`
+ position: relative;
+ <span class="hljs-subst">${mq(<span class="hljs-string">'m'</span>)(css<span class="hljs-string">`
+   position: absolute;
+ `</span>)}</span>
+ <span class="hljs-subst">${mq(<span class="hljs-string">'l'</span>)(css<span class="hljs-string">`
+   position: fixed;
+ `</span>)}</span>
+`</span></code></pre>
+				<pre><code class="language-css"><span class="hljs-comment">/* compiled css */</span>
+<span class="hljs-selector-class">.myClass</span> {
+  <span class="hljs-attribute">position</span>: relative;
+}
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">768px</span>) {
+  <span class="hljs-selector-class">.myClass</span> {
+    <span class="hljs-attribute">position</span>: absolute;
+  }
+}
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">1100px</span>) {
+  <span class="hljs-selector-class">.myClass</span> {
+    <span class="hljs-attribute">position</span>: fixed;
+  }
+}</code></pre>
+				<p>##Api</p>
+				<hr>
+				<details><summary><code>MqInit({ bp, type })</code></summary><p>
+						<ul>
+							<li><code>bp</code> (object): a breakpoint object (optional).</li>
+							<li><code>type</code> (string): can be &#39;width&#39; or &#39;height&#39; (optional).</li>
+						</ul>
+						<pre><code class="language-js"><span class="hljs-keyword">import</span> { styled, css } <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>
+<span class="hljs-keyword">import</span> MqInit <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components-media-query'</span>
+
+<span class="hljs-keyword">const</span> bp = {<span class="hljs-attr">s</span>: <span class="hljs-number">300</span>, <span class="hljs-attr">m</span>: <span class="hljs-number">500</span>, <span class="hljs-attr">l</span>: <span class="hljs-number">800</span>}
+
+<span class="hljs-comment">// this will build min-width, max-width queries</span>
+<span class="hljs-keyword">const</span> mqWidth = MqInit({ bp, <span class="hljs-attr">type</span>: <span class="hljs-string">'width'</span> })
+
+<span class="hljs-comment">// this will build min-height, max-height queries</span>
+<span class="hljs-keyword">const</span> mqHeight = MqInit({ bp, <span class="hljs-attr">type</span>: <span class="hljs-string">'height'</span> })</code></pre>
+						<p>If you don&#39;t pass any value when initializing <code>MqInit</code>, it will use the default <code>bp</code> object and <code>type</code> string, which are:</p>
+						<pre><code class="language-js"><span class="hljs-keyword">const</span> bp = {
+  <span class="hljs-attr">xxxs</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">xxs</span>: <span class="hljs-number">200</span>,
+  <span class="hljs-attr">xs</span>: <span class="hljs-number">320</span>,
+  <span class="hljs-attr">s</span>: <span class="hljs-number">400</span>,
+  <span class="hljs-attr">sl</span>: <span class="hljs-number">500</span>,
+  <span class="hljs-attr">m</span>: <span class="hljs-number">768</span>,
+  <span class="hljs-attr">ml</span>: <span class="hljs-number">992</span>,
+  <span class="hljs-attr">l</span>: <span class="hljs-number">1100</span>,
+  <span class="hljs-attr">xl</span>: <span class="hljs-number">1200</span>,
+  <span class="hljs-attr">xxl</span>: <span class="hljs-number">1300</span>,
+  <span class="hljs-attr">xxxl</span>: <span class="hljs-number">1400</span>,
+  <span class="hljs-attr">xxxxl</span>: <span class="hljs-number">1500</span>,
+  <span class="hljs-attr">xxxxxl</span>: <span class="hljs-number">1600</span>,
+  <span class="hljs-attr">xxxxxxl</span>: <span class="hljs-number">1700</span>,
+}
+<span class="hljs-keyword">const</span> type = <span class="hljs-string">'width'</span></code></pre>
+				</p></details>
+				<hr>
+				<details><summary><code>mq(min, max)</code></summary><p>
+						<ul>
+							<li><code>min</code> (string|number|null): min-width or min-height value.</li>
+							<li><code>max</code> (string|number|null): max-width or max-height value.</li>
+						</ul>
+						<p>You can use the mq function to specify min-width, max-width, min-height and max-height. Examples:</p>
+						<pre><code class="language-js"><span class="hljs-keyword">import</span> { styled, css } <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>
+<span class="hljs-keyword">import</span> MqInit <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components-media-query'</span>
+
+<span class="hljs-keyword">const</span> bp = {<span class="hljs-attr">s</span>: <span class="hljs-number">300</span>, <span class="hljs-attr">m</span>: <span class="hljs-number">500</span>, <span class="hljs-attr">l</span>: <span class="hljs-number">800</span>}
+<span class="hljs-keyword">const</span> mq = MqInit({ bp })
+<span class="hljs-keyword">const</span> mqHeight = MqInit({ bp, <span class="hljs-attr">type</span>: <span class="hljs-string">'height'</span> })
+
+<span class="hljs-keyword">const</span> CompStyled = styled.div<span class="hljs-string">`
+  // min-width(500px)
+  <span class="hljs-subst">${mq(<span class="hljs-string">'m'</span>)(css<span class="hljs-string">``</span>)}</span>         
+
+  // max-width(500px)
+  <span class="hljs-subst">${mq(<span class="hljs-literal">null</span>, <span class="hljs-string">'m'</span>)(css<span class="hljs-string">``</span>)}</span>
+
+  // between min-width(500px) and max-width(799px)
+  <span class="hljs-subst">${mq(<span class="hljs-string">'m'</span>, <span class="hljs-string">'l'</span>)(css<span class="hljs-string">``</span>)}</span>
+
+  // min-height(500px)
+  <span class="hljs-subst">${mqHeight(<span class="hljs-string">'m'</span>)(css<span class="hljs-string">``</span>)}</span>         
+
+  // max-height(500px)
+  <span class="hljs-subst">${mqHeight(<span class="hljs-literal">null</span>, <span class="hljs-string">'m'</span>)(css<span class="hljs-string">``</span>)}</span>
+
+  // between min-height(500px) and max-height(799px)
+  <span class="hljs-subst">${mqHeight(<span class="hljs-string">'m'</span>, <span class="hljs-string">'l'</span>)(css<span class="hljs-string">``</span>)}</span>
+`</span></code></pre>
+						<p>If you specify a string that is not in the <code>bp</code> object, it will throw an error, however, if needed, <strong>you can pass a specific number directly</strong>:</p>
+						<pre><code class="language-js"><span class="hljs-keyword">import</span> { styled, css } <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>
+<span class="hljs-keyword">import</span> MqInit <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components-media-query'</span>
+
+<span class="hljs-keyword">const</span> mq = MqInit()
+
+<span class="hljs-keyword">const</span> CompStyled = styled.div<span class="hljs-string">`
+  // min-width(300px)
+  <span class="hljs-subst">${mq(<span class="hljs-number">300</span>)(css<span class="hljs-string">``</span>)}</span>         
+
+  // max-width(603px)
+  <span class="hljs-subst">${mq(<span class="hljs-literal">null</span>, <span class="hljs-number">603</span>)(css<span class="hljs-string">``</span>)}</span>
+
+  // between min-width(23px) and max-width(900px)
+  <span class="hljs-subst">${mq(<span class="hljs-number">23</span>, <span class="hljs-number">900</span>)(css<span class="hljs-string">``</span>)}</span>
+`</span></code></pre>
+						<p>Also, the <code>css</code> helper is not necessary, so if you want you can use <code>mq</code> like this:</p>
+						<pre><code class="language-js"><span class="hljs-keyword">import</span> { styled } <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>
+<span class="hljs-keyword">import</span> MqInit <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components-media-query'</span>
+
+<span class="hljs-keyword">const</span> mq = MqInit()
+
+<span class="hljs-keyword">const</span> CompStyled = styled.div<span class="hljs-string">`
+  // min-width(300px)
+  <span class="hljs-subst">${mq(<span class="hljs-number">300</span>)(<span class="hljs-string">``</span>)}</span> // note that 'css' helper is missing
+`</span></code></pre>
+				</p></details>
+				<hr>
+				<details><summary><code>bp/code></summary><p>
+
+<p>If you want to use the defaults you can require <code>mq</code> directly, although I don&#39;t recommend using my breakpoints, always better to tailor them for the specific project.</p>
+						<pre><code class="language-js"><span class="hljs-keyword">import</span> { styled, css } <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>
+<span class="hljs-keyword">import</span> {mq} <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components-media-query'</span>
+
+<span class="hljs-keyword">const</span> CompStyled = styled.div<span class="hljs-string">`
+  // min-width(768px)
+  <span class="hljs-subst">${mq(<span class="hljs-string">'m'</span>)(css<span class="hljs-string">``</span>)}</span> 
+`</span></code></pre>
+				</p></details>
+				<hr>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -82,10 +232,10 @@
 						<a href="interfaces/ibp.html" class="tsd-kind-icon">Ibp</a>
 					</li>
 					<li class=" tsd-kind-variable">
-						<a href="globals.html#bpexec" class="tsd-kind-icon">bp<wbr>Exec</a>
+						<a href="globals.html#mqexec" class="tsd-kind-icon">mq<wbr>Exec</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#bpinit" class="tsd-kind-icon">Bp<wbr>Init</a>
+						<a href="globals.html#mqinit" class="tsd-kind-icon">Mq<wbr>Init</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#getbpvalue" class="tsd-kind-icon">get<wbr>BpValue</a>
