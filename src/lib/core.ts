@@ -31,12 +31,12 @@ export const getBpValue = (
     case 'string':
       if (!bp.hasOwnProperty(val)) {
         throw new Error(
-          `Breakpoint error: oops, you passed a value that is not defined in the 'bp' object.`
+          `Media Query error: oops, you passed a value that is not defined in the 'bp' object.`
         )
       }
       if (typeof bp[val] !== 'number') {
         throw new Error(
-          `Breakpoint error: oops, you passed a value that is not a proper number.`
+          `Media Query error: oops, you passed a value that is not a proper number.`
         )
       }
 
@@ -47,16 +47,16 @@ export const getBpValue = (
 }
 
 /**
- * Initialize breakpoints
+ * Initialize media query
  *
  * ### Usage
  * ```js
  * import { styled, css } from 'styled-components'
- * import BpInit from 'styled-components-media-query'
+ * import MqInit from 'styled-components-media-query'
  *
  * // initialize
- * const bpList = {s: 400, sl: 500, m: 768, ml: 992, l: 1100}
- * const bp = BpInit({ bp: bpList })
+ * const bp = {s: 400, sl: 500, m: 768, ml: 992, l: 1100}
+ * const mq = MqInit({ bp })
  *
  * // use like this
  * const ComponentStyled = styled.div`
@@ -75,42 +75,43 @@ export const getBpValue = (
  * @returns       A styled-component css string.
  */
 
-const BpInit = ({ bp = bpDefaults, type = 'width' } = {}) => (
+const MqInit = ({ bp = bpDefaults, type = 'width' } = {}) => (
   min?: string | number | null,
   max?: string | number | null
 ) => (contentCSS: any) => {
-  const minV = getBpValue(min, bp)
-  const maxV = getBpValue(max, bp)
-
-  if (!Array.isArray(contentCSS)) {
+  if (!Array.isArray(contentCSS) || typeof contentCSS !== 'string') {
     throw new Error(
-      `Breakpoint error: oops, you passed a string instead of the styled-component css\`cssCodeHere\` helper.`
+      `Media Query error: oops, you passed a invalid argument. Valid arguments are 'string' or the styled components 'css' helper.`
     )
   }
+
+  const minV = getBpValue(min, bp)
+  const maxV = getBpValue(max, bp)
+  const content = Array.isArray(contentCSS) ? contentCSS : css`${contentCSS}`
 
   if (minV >= 0 && maxV === -1) {
     return css`
       @media only screen and (min-${type}: ${minV}px) {
-        ${contentCSS}
+        ${content}
       }
     `
   } else if (minV === -1 && maxV >= 0) {
     return css`
       @media only screen and (max-${type}: ${maxV - 1}px) {
-        ${contentCSS}
+        ${content}
       }
     `
   } else if (minV >= 0 && maxV >= 0) {
     return css`
       @media only screen and (min-${type}: ${minV}px) and (max-${type}: ${maxV -
       1}px) {
-        ${contentCSS}
+        ${content}
       }
     `
   }
   return css``
 }
 
-export const bpExec = BpInit()
+export const mqExec = MqInit()
 
-export default BpInit
+export default MqInit
