@@ -7,7 +7,7 @@
   "module": "build/module/index.js",
   "repository": "https://github.com/microcipcip/styled-components-media-query",
   "license": "MIT",
-  "keywords": [],
+  "keywords": ["Styled components", "Styled components media queries", "Media queries", "Media query"],
   "scripts": {
     "describe": "npm-scripts-info",
     "build": "run-s clean && run-p build:*",
