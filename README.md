@@ -169,7 +169,7 @@ const CompStyled = styled.div`
 
 <details><summary><code>mq</code></summary><p>
 
-If you want to use the defaults you can require `mq` directly, although I don't recommend using my breakpoints, always better to tailor them for the specific project.
+If you want to use the defaults you can import `mq` directly, although I don't recommend using my breakpoints, always better to tailor them for the specific project.
  
 ```js
 import { styled, css } from 'styled-components'
