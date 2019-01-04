@@ -47,7 +47,7 @@ const ComponentStyled = styled.div`
 }
 ```
 
-##Api
+## Api
 
 ---
 
