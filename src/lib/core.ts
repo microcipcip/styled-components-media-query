@@ -79,7 +79,7 @@ const MqInit = ({ bp = bpDefaults, type = 'width' } = {}) => (
   min?: string | number | null,
   max?: string | number | null
 ) => (contentCSS: any) => {
-  if (!Array.isArray(contentCSS) || typeof contentCSS !== 'string') {
+  if (!Array.isArray(contentCSS) && typeof contentCSS !== 'string') {
     throw new Error(
       `Media Query error: oops, you passed a invalid argument. Valid arguments are 'string' or the styled components 'css' helper.`
     )
