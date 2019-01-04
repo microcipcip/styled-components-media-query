@@ -1,4 +1,4 @@
-import BpInit, {bpExec as bp} from './lib/core'
+import MqInit, {mqExec as mq} from './lib/core'
 
-export {bp}
-export default BpInit
+export {mq}
+export default MqInit
