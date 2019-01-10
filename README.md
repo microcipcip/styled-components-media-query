@@ -90,6 +90,19 @@ const bp = {
 }
 const type = 'width'
 ```
+
+You can also use `mq` directly without initializing `MqInit` at all, but **I don't recommend using my breakpoints**, always better to tailor them for the specific project.
+ 
+```js
+import { styled, css } from 'styled-components'
+import {mq} from 'styled-components-media-query'
+
+const CompStyled = styled.div`
+  // min-width(768px)
+  ${mq('m')(css``)} 
+`
+```
+
 </p></details>
 
 ---
@@ -161,23 +174,6 @@ const mq = MqInit()
 const CompStyled = styled.div`
   // min-width(300px)
   ${mq(300)(``)} // note that 'css' helper is missing
-`
-```
-</p></details>
-
----
-
-<details><summary><code>mq</code></summary><p>
-
-If you want to use the defaults you can import `mq` directly, although I don't recommend using my breakpoints, always better to tailor them for the specific project.
- 
-```js
-import { styled, css } from 'styled-components'
-import {mq} from 'styled-components-media-query'
-
-const CompStyled = styled.div`
-  // min-width(768px)
-  ${mq('m')(css``)} 
 `
 ```
 </p></details>
