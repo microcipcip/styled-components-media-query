@@ -20,12 +20,26 @@ const mq = MqInit({ bp })
 
 // use like this
 const ComponentStyled = styled.div`
- position: relative;
- ${mq('m')(css`
-   position: absolute;
+ background: red;
+ 
+ // max-width(399px)
+ ${mq(null, 's')(css`
+   background: green;
  `)}
+ 
+ // between min-width(400px) and max-width(767px)
+ ${mq('s', 'm')(css`
+   background: black;
+ `)}
+ 
+ // min-width(768px)
+ ${mq('m')(css`
+   background: orange;
+ `)}
+ 
+ // min-width(1100px)
  ${mq('l')(css`
-   position: fixed;
+   background: purple;    
  `)}
 `
 ```
@@ -33,16 +47,26 @@ const ComponentStyled = styled.div`
 ```css
 /* compiled css */
 .myClass {
-  position: relative;
+  background: red;
+}
+@media only screen and (max-width: 399px) {
+  .myClass {
+    background: green;
+  }
+}
+@media only screen and (min-width: 400px) and (max-width: 767px) {
+  .myClass {
+    background: black;
+  }
 }
 @media only screen and (min-width: 768px) {
   .myClass {
-    position: absolute;
+    background: orange;
   }
 }
 @media only screen and (min-width: 1100px) {
   .myClass {
-    position: fixed;
+    background: purple;
   }
 }
 ```
