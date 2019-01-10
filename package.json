@@ -1,6 +1,6 @@
 {
   "name": "styled-components-media-query",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Styled components utility for building media queries",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
