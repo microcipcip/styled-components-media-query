@@ -142,6 +142,14 @@
   <span class="hljs-attr">xxxxxxl</span>: <span class="hljs-number">1700</span>,
 }
 <span class="hljs-keyword">const</span> type = <span class="hljs-string">'width'</span></code></pre>
+						<p>You can also use <code>mq</code> directly without initializing <code>MqInit</code> at all, but <strong>I don&#39;t recommend using my breakpoints</strong>, always better to tailor them for the specific project.</p>
+						<pre><code class="language-js"><span class="hljs-keyword">import</span> { styled, css } <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>
+<span class="hljs-keyword">import</span> {mq} <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components-media-query'</span>
+
+<span class="hljs-keyword">const</span> CompStyled = styled.div<span class="hljs-string">`
+  // min-width(768px)
+  <span class="hljs-subst">${mq(<span class="hljs-string">'m'</span>)(css<span class="hljs-string">``</span>)}</span> 
+`</span></code></pre>
 				</p></details>
 				<hr>
 				<details><summary><code>mq(min, max)</code></summary><p>
@@ -201,17 +209,6 @@
 <span class="hljs-keyword">const</span> CompStyled = styled.div<span class="hljs-string">`
   // min-width(300px)
   <span class="hljs-subst">${mq(<span class="hljs-number">300</span>)(<span class="hljs-string">``</span>)}</span> // note that 'css' helper is missing
-`</span></code></pre>
-				</p></details>
-				<hr>
-				<details><summary><code>mq</code></summary><p>
-						<p>If you want to use the defaults you can import <code>mq</code> directly, although I don&#39;t recommend using my breakpoints, always better to tailor them for the specific project.</p>
-						<pre><code class="language-js"><span class="hljs-keyword">import</span> { styled, css } <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>
-<span class="hljs-keyword">import</span> {mq} <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components-media-query'</span>
-
-<span class="hljs-keyword">const</span> CompStyled = styled.div<span class="hljs-string">`
-  // min-width(768px)
-  <span class="hljs-subst">${mq(<span class="hljs-string">'m'</span>)(css<span class="hljs-string">``</span>)}</span> 
 `</span></code></pre>
 				</p></details>
 				<hr>
