@@ -85,26 +85,50 @@
 
 <span class="hljs-comment">// use like this</span>
 <span class="hljs-keyword">const</span> ComponentStyled = styled.div<span class="hljs-string">`
- position: relative;
- <span class="hljs-subst">${mq(<span class="hljs-string">'m'</span>)(css<span class="hljs-string">`
-   position: absolute;
+ background: red;
+
+ // max-width(399px)
+ <span class="hljs-subst">${mq(<span class="hljs-literal">null</span>, <span class="hljs-string">'s'</span>)(css<span class="hljs-string">`
+   background: green;
  `</span>)}</span>
+
+ // between min-width(400px) and max-width(767px)
+ <span class="hljs-subst">${mq(<span class="hljs-string">'s'</span>, <span class="hljs-string">'m'</span>)(css<span class="hljs-string">`
+   background: black;
+ `</span>)}</span>
+
+ // min-width(768px)
+ <span class="hljs-subst">${mq(<span class="hljs-string">'m'</span>)(css<span class="hljs-string">`
+   background: orange;
+ `</span>)}</span>
+
+ // min-width(1100px)
  <span class="hljs-subst">${mq(<span class="hljs-string">'l'</span>)(css<span class="hljs-string">`
-   position: fixed;
+   background: purple;    
  `</span>)}</span>
 `</span></code></pre>
 				<pre><code class="language-css"><span class="hljs-comment">/* compiled css */</span>
 <span class="hljs-selector-class">.myClass</span> {
-  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">background</span>: red;
+}
+@<span class="hljs-keyword">media</span> only screen and (max-width: <span class="hljs-number">399px</span>) {
+  <span class="hljs-selector-class">.myClass</span> {
+    <span class="hljs-attribute">background</span>: green;
+  }
+}
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">400px</span>) and (max-width: <span class="hljs-number">767px</span>) {
+  <span class="hljs-selector-class">.myClass</span> {
+    <span class="hljs-attribute">background</span>: black;
+  }
 }
 @<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">768px</span>) {
   <span class="hljs-selector-class">.myClass</span> {
-    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">background</span>: orange;
   }
 }
 @<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">1100px</span>) {
   <span class="hljs-selector-class">.myClass</span> {
-    <span class="hljs-attribute">position</span>: fixed;
+    <span class="hljs-attribute">background</span>: purple;
   }
 }</code></pre>
 				<h2 id="api">Api</h2>
